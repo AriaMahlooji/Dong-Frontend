@@ -1,0 +1,75 @@
+
+<a class="btn btn-dark btn-lg" routerLink='/home' routerLinkActive='active' role="button"><i class="fas fa-hand-point-left"></i></a>
+<h1 align="center"><strong>Send Request</strong></h1>
+ <div class="row mt-20">
+      <div class="col-md-6">
+        <div class="row" style="height: 450px;">
+            <div class="col-md-12 my-auto side-header">
+                <img src="/assets/Images/SendRequest.png" class="mx-auto d-block">
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+              <input type="hidden" name="Id" [value]="0" />
+
+            <div class="form-group required">
+              <label>Building</label>
+         <select style="cursor: pointer;"  class="select-css form-group required" formControlName="BuildingId" >
+               <option value="" selected disabled>Please select</option>
+               <option style="cursor: pointer;"  *ngFor=" let item of service.list"  value="{{item.id}}" >{{item.name}}</option>
+           </select>
+            </div>
+            <hr>
+            <div class="form-group  ">
+                <label><strong>Is Private</strong></label>
+                <br>
+                <input type="form-check-input" type="checkbox" style="cursor: pointer;" formControlName="IsPrivate" (change)="onIsPrivateChange($event)"/>
+            </div>
+            <hr>
+            <div class="form-group required">
+                <label><strong>Abstract</strong></label>
+                <br>
+                <textarea rows="2" cols="50" placeholder="Abstraction" formControlName="Abstract" ></textarea>
+                <br>
+            </div>
+            <hr>
+            <div class="form-group required">
+                <label><strong>Context</strong></label>
+                <br>
+                <textarea rows="4" cols="50" placeholder="Type The Whole Request" formControlName="Context"></textarea>
+            </div>
+            <div class="form-group required ">
+                    <label><strong>Suuggested Price</strong></label>
+                    <br>
+                <input rows="1" cols="30" placeholder="&euro;"  formControlName="Price">
+                <label  class="text-danger" *ngIf="service.formModel.get('Price').touched  && service.formModel.get('Price').errors?.required">This Field Is Mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Price').touched && service.formModel.get('Price').errors?.pattern">Incorrect Pattern</label>
+                </div>
+
+                <hr>
+                <div  class="form-group required">
+                        <label><strong>Deadline</strong></label>
+                        <br>
+                    <input type="number" rows="1" cols="15"  placeholder="Days" formControlName="DeadLine">
+                    <label class="text-danger" *ngIf="service.formModel.get('DeadLine').touched && service.formModel.get('DeadLine').errors?.pattern">Incorrect Pattern</label>
+
+                    </div>
+                    <hr>
+
+              <div class="form-row">
+                  <div class="form-group col-md-8 offset-md-2">
+                      <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid"  >Send</button>
+                  </div>
+              </div>
+          </form>
+         </div>
+
+
+    </div>
+
+<!-- <div>
+    <select  >
+        <option *ngFor=" let item of service.list">{{item.name}}</option>
+    </select>
+</div> -->

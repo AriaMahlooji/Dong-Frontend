@@ -1,0 +1,29 @@
+
+ <a class="btn btn-dark btn-lg" routerLink='/home' routerLinkActive='active' role="button"><i class="fas fa-hand-point-left"></i></a>
+
+ <!-- <ul class="list-group"style="list-style-position:inside; margin-right:-35px">
+      <br>
+      <br>
+        <li class="list-group-item"><strong>Building <em>{{this.flatService.flatDescription.flatBuildingName}}</em></strong></li>
+        <li class="list-group-item"><strong>Flat  <em>{{this.flatService.flatDescription.name}}</em></strong></li>
+        <li class="list-group-item"><strong>Floor Number {{this.flatService.flatDescription.floorNumber}} </strong></li>
+        <li class="list-group-item"><strong>Flat Number {{this.flatService.flatDescription.unitNumber}}</strong></li>
+       
+      </ul>    
+    
+    -->
+<div class="col-m-1">
+<table class="table table-hover">
+    <td><b><i>Building</i></b></td>
+    <td><b><i>Flat</i></b></td>
+    <td><b><i>Floor</i></b></td>
+    <td><b><i>Unit</i></b></td>
+    <tr>
+      <td>{{this.flatService.flatDescription.flatBuildingName}}</td>
+      <td>{{this.flatService.flatDescription.name}}</td>
+      <td>{{this.flatService.flatDescription.floorNumber}}</td>
+      <td>{{this.flatService.flatDescription.unitNumber}}</td>
+    </tr>
+</table>
+</div>
+<div class="col-m-2"></div>

@@ -1,0 +1,70 @@
+<h1 align="center" >User Registration</h1>
+
+
+<div class="row mt-20">
+    <div class="col-md-6">
+        <div class="row" style="height: 450px;">
+            <div class="col-md-12 my-auto side-header">
+                <img src="/assets/Images/manager.png" class="mx-auto d-block">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+            <div class="form-group required">
+                <label>Username</label>
+                <input  class="form-control" formControlName="Username">
+                <label class="text-danger" *ngIf="service.formModel.get('Username').touched && service.formModel.get('Username').errors?.required">This Field Is Mandatory</label>
+            </div>
+            <div class="form-group required">
+                 <label>Email</label>
+                 <input   class="form-control" formControlName="Email">
+                <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.required">This Field Is Mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Invalid Email Address</label>
+
+            </div>
+            <div class="form-group">
+                 <label>Fullname</label>
+                 <input  class="form-control" formControlName="Fullname">
+            </div>
+            <div class="form-group required "  >
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" formControlName="Phonenumber" >
+                <label class="text-danger" *ngIf="service.formModel.get('Phonenumber').touched && service.formModel.get('Phonenumber').errors?.required">This Field Is Mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Phonenumber').touched && service.formModel.get('Phonenumber').errors?.pattern">Incorrect Pattern</label>
+
+               </div>
+
+               <div class="form-group required "  >
+                    <label>SSN</label>
+                    <input type="tel" class="form-control" formControlName="SSN">
+                <label class="text-danger"  type="Number" *ngIf="service.formModel.get('SSN').touched && service.formModel.get('SSN').errors?.required">This Field Is Mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('SSN').touched && service.formModel.get('SSN').errors?.pattern">Only Digits</label>
+
+               </div>
+
+        <div formGroupName="Passwords">
+            <div class="form-group required">
+                 <label>Password</label>
+                 <input type="password" class="form-control" formControlName="Password">
+                <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">This Field Is Mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">Minimum 8 Characters</label>
+
+            </div>
+            <div class="form-group required">
+                 <label>Confirm Password</label>
+                 <input type="password" class="form-control" formControlName="ConfirmPassword">
+                <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">This Field Is Mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.PasswordMismatch">Password and Confirm Password must match </label>
+
+            </div>
+        </div>
+            <div class="form-row">
+                <div class="form-group col-md-8 offset-md-2">
+                    <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

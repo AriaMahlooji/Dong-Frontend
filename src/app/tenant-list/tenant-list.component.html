@@ -1,0 +1,39 @@
+<a class="btn btn-dark btn-lg" routerLink='/home' routerLinkActive='active' role="button"><i class="fas fa-hand-point-left"></i></a>
+
+<h1 align="center"><strong>Tenants</strong></h1>
+
+<div style="margin-right: 2.5cm;" dir="rtl" class="custom-control custom-switch"  >
+    <input type="checkbox" class="custom-control-input" id="customSwitches" (input)="service.onlyActiveTenants()" >
+    <label class="custom-control-label" for="customSwitches">Only Active Tenants</label>
+  </div>
+
+<hr>
+<br>
+<table class="table table-hover">
+    <td align="center"><strong>Fullname</strong></td>
+    <td align="center"><strong>Floor Number</strong></td>
+    <td align="center"><strong>Unit Number</strong></td>
+    <td align="center"><strong>Unit Name</strong></td>
+    
+    <td align="center"><strong>Duration of Residence In Days</strong></td>
+    <td align="center"><strong>Status</strong></td>
+    <td align="center"><strong> Delegation</strong> </td> 
+    <td align="center"><strong> Remove Tenant</strong> </td>
+   
+   
+    <tr *ngFor="let pd of service.tempTenantsList">
+        <td (click)="this.tenantHover()" align="center">{{pd.fullName}} <i *ngIf="pd.isManager" class="fas fa-crown"></i> <i *ngIf="pd.isComanager" align="center" style="color: darkslategray;" class="fab fa-cuttlefish"> </i></td> 
+        <td align="center">{{pd.floorNumber}}</td>
+        <td align="center">{{pd.unitNumber}}</td>
+        <td align="center">{{pd.unitName}}</td>
+        
+        <td align="center">{{pd.residenceDurationInDays}}</td>
+        <td *ngIf="pd.isActive" align="center"><i  style="color: darkgreen;" class="fas fa-circle"></i></td>
+        <td *ngIf="!pd.isActive" align="center"><i style="color: darkred;" class="fas fa-circle"></i></td>
+
+        <td *ngIf="pd.isActive" align="center"><i *ngIf="!pd.isComanager" (click)="addComanager(pd.buildingId,pd.id,pd.fullName)" class="fas fa-check-circle" style="font-size: 1.5em;"></i><i *ngIf="pd.isComanager" (click)="removeComanager(pd.buildingId,pd.id,pd.fullName)" class="fas fa-times-circle text-danger" style="font-size: 1.5em;"></i></td>
+        <td *ngIf="!pd.isActive"></td>
+        <td *ngIf="pd.isActive" align="center" (click)="removeTenant(pd.flatId,pd.buildingId)"><i class="fas fa-trash-alt text-danger" style="font-size: 1.5em;"></i></td>
+        <td *ngIf="!pd.isActive"></td>
+    </tr>
+</table>

@@ -1,0 +1,63 @@
+<a class="btn btn-dark btn-lg" routerLink='/home' routerLinkActive='active' role="button"><i class="fas fa-hand-point-left"></i></a>
+<h1 align="center"><strong>Tenant Invitation</strong></h1>
+ <div class="wrapper col-md-20">
+
+    <div class="wrapped-div ">
+
+      <div class="tab-header">
+
+
+        <hr>
+      </div>
+      <div class="row mt-8">
+          <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+              <input type="hidden" name="Id" [value]="0" />
+
+            <div class="form-group required">
+                <label>Building Name</label>
+           <select class="select-css form-group required" formControlName="BuildingId" >
+
+               <option *ngFor=" let item of service.list"  value="{{item.id}}" >{{item.name}}</option>
+           </select>
+            </div>
+            <div class="form-group ">
+                    <label>Unit Name</label>
+                    <input  class="form-control" formControlName="UnitName">
+                </div>
+            <div class="form-group required">
+                <label>Floor Number</label>
+                <input  class="form-control" formControlName="FloorNumber">
+            </div>
+            <div class="form-group required">
+                <label>Unit Number</label>
+                <input  class="form-control" formControlName="UnitNumber">
+            </div>
+              <div class="form-group required">
+                  <label>Phone number</label>
+                  <input  class="form-control" formControlName="Phonenumber">
+              </div>
+              <div class="form-group required">
+                  <label>Email</label>
+                  <input  class="form-control" formControlName="Email">
+              </div>
+              <div class="form-group required">
+                   <label>Fullname</label>
+                   <input  class="form-control" formControlName="Fullname">
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group col-md-8 offset-md-2">
+                      <button type="submit" class="btn btn-lg btn-block" >Invite</button>
+                  </div>
+              </div>
+          </form>
+         </div>
+
+      </div>
+    </div>
+
+<!-- <div>
+    <select  >
+        <option *ngFor=" let item of service.list">{{item.name}}</option>
+    </select>
+</div> -->

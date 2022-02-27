@@ -1,0 +1,38 @@
+<a class="btn btn-dark btn-lg" routerLink='/home' routerLinkActive='active' role="button"><i class="fas fa-hand-point-left"></i></a>
+<h1 align="center"><strong>Join a Flat</strong></h1>
+<hr>
+      <div class="row mt-13">
+
+              <div class="col-md-6">
+                  <div class="row" style="height: 280px;">
+                      <div class="col-md-16 my-auto side-header">
+                          <img src="/assets/Images/Join a flat.png" class="mx-auto d-block">
+
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+          <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+              <input type="hidden" name="Id" [value]="0" />
+
+            <div class="form-group required">
+                <label>Phone number</label>
+                <input  class="form-control" formControlName="Phonenumber">
+            </div>
+
+            <div class="form-group required">
+                <label>Registration Code</label>
+                <input  class="form-control" formControlName="RegistrationCode">
+            </div>
+              <div class="form-row">
+                  <div class="form-group col-md-8 offset-md-2">
+                      <button type="submit" class="btn btn-lg btn-block">Join</button>
+                  </div>
+              </div>
+          </form>
+              </div>
+         </div>
+
+
+
+

@@ -1,0 +1,93 @@
+<div class="col-sm-13">
+  <div class="row-mt-6">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div  class="navbar-collapse collapse" id="navbarColor01" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a  class="nav-link"  href="/userprofile"> <img title="User Profile" src="/assets/Images/UserProfile31x.png" style="padding-top: 0mm;" ></a>
+          </li>
+          <li *ngIf="this.isManagerOrComanager"  class="nav-item">
+            <a style="margin-top: 15px;" class="nav-link"  href="/add-tenant">Add Tenant </a>
+          </li>
+          <li class="nav-item">
+            <a  style="margin-top: 15px;" class="nav-link" href="/add-building">Add Building</a>
+          </li>
+          <li class="nav-item">
+            <a style="margin-top: 15px;" class="nav-link" href="/joinflat">Join a Flat</a>
+          </li>
+          <li *ngIf="this.isManagerOrComanager" class="nav-item">
+            <a  style="margin-top: 15px;" class="nav-link" href="/request">Send Request</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Add Comanager</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" >Wich Building</a>
+              <option class="dropdown-item"  (click)="service3.getBuildingRequests(item.id)" *ngFor=" let item of service2.list"  value="{{item.id}}" >{{item.name}}</option>
+            </div>
+          </li>-->
+
+          <li  *ngIf="this.isManagerOrComanager" class="nav-item dropdown">
+            <a  style="margin-top: 15px;" class="nav-link dropdown-toggle" data-toggle="dropdown" >Tenants</a>
+            <div class="dropdown-menu">
+
+              <option class="dropdown-item"  (click)="service4.getTenantsOfBuilding(item.id)" *ngFor=" let item of service2.mainRoleBuildings"  value="{{item.id}}" >{{item.name}}</option>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+
+              <a  style="margin-top: 15px;" class="nav-link dropdown-toggle"  data-toggle="dropdown" >Voting <span *ngIf="this.counter >0" class="badge badge-secondary">+ {{this.counter}}</span></a>
+              <div class="dropdown-menu">
+
+                <option class="dropdown-item"  (click)="service3.getBuildingRequests(item.id)" *ngFor=" let item of service2.list;let i = index"  value="{{item.id}}" >{{item.name}}  <span *ngIf="this.arrayCounter.length!=0 && this.arrayCounter[1][i]>0"  class="badge badge-dark"><i class="fas fa-plus"></i>  +{{this.arrayCounter[1][i]}}</span></option>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a  style="margin-top: 15px;"  class="nav-link dropdown-toggle" data-toggle="dropdown" >Flats</a>
+              <div class="dropdown-menu">
+
+                <option class="dropdown-item"  (click)="flatService.getThisFlat(item.id)" *ngFor=" let item of service2.flatList"  value="{{item.id}}" >{{item.name}}</option>
+              </div>
+            </li>
+              <!-- <li class="nav-item">
+                  <a  class="nav-link" routerLink="/adminpanel" >Admin Panel</a>
+              </li>
+              <li *ngIf="checkBikar()" class="nav-item">
+                  <a  class="nav-link" routerLink="/notallowed">Not Allowed</a>
+                </li> -->
+        </ul>
+        <form class="form-inline" >
+          <button  style="margin-top: 15px;" class="btn btn-outline-info my-2 my-sm-0 " type="button" (click)="onLogout()"><i  class="fas fa-sign-out-alt"></i>Logout</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+   
+<div class="row">
+
+
+
+      <img src="/assets/Images/Logo1.png" class="center" >
+
+
+
+ <!-- <div class="col-sm-4" *ngIf="userDetails">
+    <ul class="list-group"style="list-style-position:inside; margin-right:-35px">
+      <br>
+      <br>
+        <li class="list-group-item"><strong>Username :<em>{{userDetails.userName}}</em></strong></li>
+        <li class="list-group-item"><strong>Email :{{userDetails.email}}</strong></li>
+        <li class="list-group-item"><strong>Phonenumber :{{userDetails.phoneNumber}}</strong></li>
+        <li class="list-group-item"><strong>Fullname :{{userDetails.fullname}}</strong></li>
+        <li class="list-group-item"><strong>SSN :<em>{{userDetails.ssn}}</em></strong></li>
+        <li *ngIf="userDetails.buildingNames.length != 0" class="list-group-item"><strong>List Of Buildings :<em>{{userDetails.buildingNames}}</em></strong></li>
+      </ul>
+    </div>-->
+  </div>
+  </div>
+

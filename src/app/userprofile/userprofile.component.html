@@ -1,0 +1,240 @@
+<a class="btn btn-dark btn-lg" routerLink='/home' routerLinkActive='active' role="button"><i class="fas fa-hand-point-left"></i></a>
+<div *ngIf="!this.wantToEdit">
+<h1 align="center"><strong>User Details</strong></h1>
+<hr>
+<br>
+<!--Showing user details part-->
+<div class="container bootstrap snippets bootdey">
+    <div class="panel-body inf-content">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../assets/Images/UserDetails8x.png"> 
+            </div>
+            <div class="col-md-6">
+                
+                <div class="table-responsive">
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr class="noBorder">    
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                    Fullname                                                
+                                </strong>
+                            </td>
+                            <td >
+                                <p style = "font-family:Playfair Display" > {{userDetails.fullname}}</p>
+                            </td>
+                        </tr>
+
+    
+                        <tr class="noBorder">        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                    Username                                                
+                                </strong>
+                            </td>
+                            <td>
+                                <p style = "font-family:Playfair Display" >{{userDetails.userName}} </p>
+                            </td>
+                        </tr>
+    
+    
+                       
+                        <tr class="noBorder">        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                   <img title="Email Address" src="../../assets/Images/Frame 11.png">                                              
+                                </strong>
+                            </td>
+                            <td >
+                                <p style = "font-family:Playfair Display" >{{userDetails.email}}</p>  
+                            </td>
+                        </tr> 
+                        <tr class="noBorder">        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    <img title="Phonenumber" src="../../assets/Images/PhoneIcon1x.png">                                               
+                                </strong>
+                            </td>
+                            <td >
+                                <p style = "font-family:Playfair Display" >{{userDetails.phoneNumber}}</p>  
+                            </td>
+                        </tr>  
+                        <tr class="noBorder">        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    SSN                                                
+                                </strong>
+                            </td>
+                            <td >
+                                <p style = "font-family:Playfair Display" >{{userDetails.ssn}} </p> 
+                            </td>
+                        </tr>
+                        <tr class="noBorder" *ngIf="userDetails.buildingNames.length != 0">        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Building Names                                                
+                                </strong>
+                            </td>
+                            <td >
+                                <p style = "font-family:Playfair Display" >{{userDetails.buildingNames}}</p>  
+                            </td>
+                        </tr>                            
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> 
+    <div class="row">
+        <img (click)="this.activateEditMode()" class="zoonableimage" title="Edit User Details" style="width: 100px; margin-top: 50px;cursor: pointer;display: block;margin-left: auto;margin-right: auto;" src="../../assets/Images/EditIcon2x.png" >  </div>                                 
+    </div>    
+
+    <!-- Edit Part-->
+
+    <div *ngIf="this.wantToEdit">
+        <div class="container bootstrap snippets bootdey">
+            <div class="panel-body inf-content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="../../assets/Images/UserDetails8x.png"> 
+                        <ul title="Ratings" class="list-inline ratings text-center">
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <form autocomplete="off">
+                        <div class="table-responsive">
+                        <table  class="table table-user-information">
+                            <tbody>
+                                <tr class="noBorder">    
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                            Username                                                
+                                        </strong>
+                                    </td>
+                                    <td >
+                                        {{userDetails.userName}}
+                                    </td>
+                                </tr>
+                                <tr class="noBorder">    
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                            Fullname                                                
+                                        </strong>
+                                    </td>
+                                    <td >
+                                        {{userDetails.fullname}}  
+                                    </td>
+                                </tr>
+                                <tr class="noBorder">        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                           <img style="margin-top: -10px;" title="Email Address" src="../../assets/Images/Frame 11.png">                                              
+                                        </strong>
+                                    </td>
+                                    <td >
+                                        <input id="gmailfield" class="edituserdetails"  value="{{userDetails.email}}" (input)="bindGmail($event)"> 
+                                         <label class="text-success" *ngIf="this.gmailDirtyState && this.isNewGmailValid" >Acceptable</label>
+                                        <label class="text-danger" *ngIf="this.gmailDirtyState && !this.isNewGmailValid">Incorrect Gmail Pattern</label> 
+                                    </td>
+                                </tr> 
+                                <tr class="noBorder">        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                            <img style="margin-top: -10px;" title="Phonenumber" src="../../assets/Images/PhoneIcon1x.png">                                               
+                                        </strong>
+                                    </td>
+                                    <td >
+                                        <input class="edituserdetails" value="{{userDetails.phoneNumber}}" (input)="bindPhonenumber($event)">  
+                                        <label *ngIf="this.phonenumberDirtyState && this.isPhonenumberOk" class="text-success">Acceptable</label>
+                                        <label *ngIf="this.phonenumberDirtyState && !this.isPhonenumberOk" class="text-danger">Incorrect Pattern</label>
+                                    </td>
+                                </tr>  
+                                
+                                <tr class="noBorder">        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                            SSN                                                
+                                        </strong>
+                                    </td>
+                                    <td >
+                                       {{userDetails.ssn}}  
+                                    </td>
+                                </tr>
+                                
+                                <tr class="noBorder">        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                            Currnet Password                                                
+                                        </strong>
+                                    </td>
+                                    <td >
+                                        <input type="password" autocomplete="current-password"  class="edituserdetails" placeholder="Enter Your Current Password" (input)="bindCurrentPassword($event)">
+                                        <label class="text-danger" *ngIf="this.submitButtonIsPressed && this.currentPasswordDirtyState && !this.isCurrentPassWordCorrect">Incorrect</label> 
+                                        <label class="text-success" *ngIf="this.currentPasswordDirtyState && this.isCurrentPassWordCorrect">Correct</label> 
+
+                                    </td>
+                                </tr>
+                                <tr class="noBorder">        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                            New Password                                                
+                                        </strong>
+                                    </td>
+
+                                     
+
+                                    <td >
+                                        <input  id="newPasswordField" type="password"   class="edituserdetails" placeholder="Only If you want to change Your Password" (input)="bindNewPassword($event)"> 
+                                        <label *ngIf="this.isNewPasswordOk && this.newPasswordDirtyState" class="text-success">Acceptable</label>
+                                        <br> 
+                                        <label  *ngIf="this.newPasswordDirtyState && this.isSimilarToOldPassword" class="text-danger">Is Similar to Current Password</label>
+                                        <br *ngIf="this.newPasswordDirtyState && this.isSimilarToOldPassword" >
+
+                                        <label *ngIf="this.newPasswordDirtyState && !this.newPasswordLenghtState" class="text-danger">At Least 8 Characters</label>
+                                        <br *ngIf="this.newPasswordDirtyState && !this.newPasswordLenghtState">
+
+                                        <label *ngIf="this.newPasswordDirtyState && !this.newPasswordHasDigit" class="text-danger">At Least 1 digit</label>
+                                        <br *ngIf="this.newPasswordDirtyState && !this.newPasswordHasDigit">
+
+                                        <label *ngIf="this.newPasswordDirtyState && !this.newPasswordHasSpescialCharacter" class="text-danger">At Least 1 Special Character</label>
+                                        <br *ngIf="this.newPasswordDirtyState && !this.newPasswordHasSpescialCharacter">
+
+                                        <label *ngIf="this.newPasswordDirtyState && !this.newPasswordHasLowerCase" class="text-danger">At Least 1 Lowercase Letter</label>
+                                        <br *ngIf="this.newPasswordDirtyState && !this.newPasswordHasLowerCase">
+
+                                        <label *ngIf="this.newPasswordDirtyState && !this.newPasswordHasUpperCase" class="text-danger">At Least 1 Uppercase Letter</label>
+                                    </td>
+                                </tr>
+                                                          
+                            </tbody>
+                        </table>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <img (click)="this.disableEditMode()" class="zoonableimage" title="Cancel Editing Mode" style="margin-left: 740px; margin-top: 50px;cursor: pointer;" src="../../assets/Images/CancelIcon2x.png" >
+            <img *ngIf="this.isNewGmailValid && this.isPhonenumberOk && ((this.isNewPasswordOk &&  this.newPasswordDirtyState)||(!this.newPasswordDirtyState)) && this.currentPasswordDirtyState" (click)="this.submitEdit()" class="zoonableimage" title="Submit" style="margin-top: 50px;cursor: pointer; margin-left: 10px;" src="../../assets/Images/TickIcon2x.png" >
+
+    </div>
